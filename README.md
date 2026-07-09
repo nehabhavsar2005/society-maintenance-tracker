@@ -34,17 +34,21 @@ Built with a premium SaaS-grade UI/UX inspired by Linear, Notion, and the Vercel
 
 <div align="center">
 
-## 📊 Dashboard
+### 📊 Dashboard
 
 ![Dashboard Screenshot](./docs/screenshots/dashboard.png)
 
 | Banner | Login |
 |--------|-------|
-| ![Banner Screenshot](./docs/screenshots/banner.png) | ![Login Screenshot](./docs/screenshots/login.png) |
+| ![Banner](./docs/screenshots/banner.png) | ![Login](./docs/screenshots/login.png) |
 
 | Admin Panel | Complaints |
 |-------------|------------|
-| ![Admin Screenshot](./docs/screenshots/admin.png) | ![Complaints Screenshot](./docs/screenshots/complaints.png) |
+| ![Admin](./docs/screenshots/admin.png) | ![Complaints](./docs/screenshots/complaints.png) |
+
+| Notice Board | Residents |
+|--------------|-----------|
+| ![Notice Board](./docs/screenshots/notice_board.png) | ![Residents](./docs/screenshots/residents.png) |
 
 </div>
 
