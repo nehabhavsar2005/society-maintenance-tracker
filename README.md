@@ -45,11 +45,11 @@ Built with a premium SaaS-grade UI/UX inspired by Linear, Notion, and the Vercel
 
 | Admin Panel | Analytics |
 |---|---|
-| ![Admin Screenshot](./docs/screenshots/admin.png) | ![Analytics Screenshot](./docs/screenshots/analytics.png) |
+| ![Admin Screenshot](./docs/screenshots/admin.png) | ![Analytics Screenshot](./docs/screenshots/complaints.png) |
 
 | Dark Mode | Mobile View |
 |---|---|
-| ![Dark Mode Screenshot](./docs/screenshots/dark-mode.png) | ![Mobile Screenshot](./docs/screenshots/mobile.png) |
+| ![Dark Mode Screenshot](./docs/screenshots/banner.png) | ![Mobile Screenshot](./docs/screenshots/mobile.png) |
 
 > 📸 *All images above are placeholders — drop your real screenshots into `docs/screenshots/` with the matching filenames and they'll render automatically.*
 
@@ -793,10 +793,10 @@ Normalized PostgreSQL schema managed with **Prisma migrations**. All relations u
 | | |
 |---|---|
 | **Desktop** | ![Desktop Screenshot](./docs/screenshots/desktop.png) |
-| **Dark Mode** | ![Dark Mode Screenshot](./docs/screenshots/dark-mode.png) |
+| **Dark Mode** | ![Dark Mode Screenshot](./docs/screenshots/banner.png) |
 | **Mobile** | ![Mobile Screenshot](./docs/screenshots/mobile.png) |
 | **Dashboard** | ![Dashboard Screenshot](./docs/screenshots/dashboard.png) |
-| **Analytics** | ![Analytics Screenshot](./docs/screenshots/analytics.png) |
+| **Analytics** | ![Analytics Screenshot](./docs/screenshots/complaints.png) |
 
 > Replace the placeholders in `docs/screenshots/` — see [`docs/SCREENSHOTS.md`](./docs/SCREENSHOTS.md) for the exact filenames expected.
 
