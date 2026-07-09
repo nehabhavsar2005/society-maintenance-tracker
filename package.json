@@ -1,0 +1,22 @@
+{
+  "name": "society-maintenance-tracker",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Society Maintenance Tracker - full stack complaint management system for apartment societies",
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend"
+  ],
+  "scripts": {
+    "dev:backend": "npm run dev --workspace=apps/backend",
+    "dev:frontend": "npm run dev --workspace=apps/frontend",
+    "build:backend": "npm run build --workspace=apps/backend",
+    "build:frontend": "npm run build --workspace=apps/frontend",
+    "lint:backend": "npm run lint --workspace=apps/backend",
+    "lint:frontend": "npm run lint --workspace=apps/frontend",
+    "seed": "npm run seed --workspace=apps/backend"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "Society Maintenance Tracker API",
+    "description": "REST API collection for the Society Maintenance Tracker backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api" },
+    { "key": "accessToken", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"password\": \"Password@123\",\n  \"flatNumber\": \"A-101\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/login",
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@societytracker.com\",\n  \"password\": \"Password@123\"\n}" }
+          }
+        },
+        { "name": "Refresh Token", "request": { "method": "POST", "url": "{{baseUrl}}/auth/refresh" } },
+        {
+          "name": "Logout",
+          "request": { "method": "POST", "url": "{{baseUrl}}/auth/logout", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }] }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/forgot-password",
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"jane@example.com\"\n}" }
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/reset-password",
+            "body": { "mode": "raw", "raw": "{\n  \"token\": \"<reset-token>\",\n  \"password\": \"NewPassword@123\"\n}" }
+          }
+        },
+        { "name": "Me", "request": { "method": "GET", "url": "{{baseUrl}}/auth/me", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }] } }
+      ]
+    },
+    {
+      "name": "Complaints",
+      "item": [
+        { "name": "List Complaints", "request": { "method": "GET", "url": "{{baseUrl}}/complaints?page=1&limit=10", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }] } },
+        {
+          "name": "Create Complaint",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/complaints",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "title", "value": "Water leakage in bathroom" },
+                { "key": "description", "value": "There is a persistent leak near the ceiling." },
+                { "key": "category", "value": "PLUMBING" },
+                { "key": "priority", "value": "HIGH" },
+                { "key": "images", "type": "file", "src": [] }
+              ]
+            }
+          }
+        },
+        { "name": "Get Complaint By Id", "request": { "method": "GET", "url": "{{baseUrl}}/complaints/:id", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }] } },
+        {
+          "name": "Admin Update Complaint",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/complaints/:id/admin",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"IN_PROGRESS\",\n  \"notes\": \"Plumber assigned\"\n}" }
+          }
+        },
+        { "name": "Delete Complaint", "request": { "method": "DELETE", "url": "{{baseUrl}}/complaints/:id", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }] } },
+        {
+          "name": "Bulk Action",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/complaints/bulk",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"complaintIds\": [\"id1\", \"id2\"],\n  \"action\": \"SET_STATUS\",\n  \"status\": \"RESOLVED\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notices",
+      "item": [
+        { "name": "List Notices", "request": { "method": "GET", "url": "{{baseUrl}}/notices", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }] } },
+        {
+          "name": "Create Notice",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/notices",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"AGM Scheduled\",\n  \"content\": \"Annual General Meeting on Sunday.\",\n  \"isPinned\": true\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [{ "name": "Get Stats", "request": { "method": "GET", "url": "{{baseUrl}}/dashboard/stats", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }] } }]
+    },
+    {
+      "name": "Health",
+      "item": [{ "name": "Health Check", "request": { "method": "GET", "url": "{{baseUrl}}/health" } }]
+    }
+  ]
+}

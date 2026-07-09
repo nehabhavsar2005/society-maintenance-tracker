@@ -1,0 +1,291 @@
+// Society Maintenance Tracker - Database Schema
+// PostgreSQL + Prisma ORM
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// ENUMS
+// ---------------------------------------------------------------------------
+
+enum Role {
+  RESIDENT
+  ADMIN
+}
+
+enum ComplaintCategory {
+  ELECTRICAL
+  WATER
+  PLUMBING
+  SECURITY
+  PARKING
+  LIFT
+  CLEANING
+  GARDEN
+  NOISE
+  OTHER
+}
+
+enum ComplaintPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum ComplaintStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+  OVERDUE
+}
+
+enum NotificationType {
+  COMPLAINT_CREATED
+  COMPLAINT_STATUS_CHANGED
+  COMPLAINT_RESOLVED
+  COMPLAINT_OVERDUE
+  NOTICE_POSTED
+  PASSWORD_RESET
+  SYSTEM
+}
+
+enum EmailStatus {
+  SENT
+  FAILED
+  PENDING
+}
+
+// ---------------------------------------------------------------------------
+// USERS
+// ---------------------------------------------------------------------------
+
+model User {
+  id                String    @id @default(uuid())
+  name              String
+  email             String    @unique
+  password          String
+  phone             String?
+  role              Role      @default(RESIDENT)
+  flatNumber        String?
+  block              String?
+  avatarUrl         String?
+  isActive          Boolean   @default(true)
+  emailVerified     Boolean   @default(false)
+
+  refreshToken      String?
+  passwordResetToken   String?
+  passwordResetExpires DateTime?
+
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  complaints        Complaint[]        @relation("ResidentComplaints")
+  assignedComplaints Complaint[]       @relation("AssignedComplaints")
+  complaintHistories ComplaintHistory[] @relation("ActorHistories")
+  notices           Notice[]           @relation("NoticeAuthor")
+  notifications     Notification[]
+  auditLogs         AuditLog[]
+  emailLogs         EmailLog[]
+
+  @@index([email])
+  @@index([role])
+  @@map("users")
+}
+
+// ---------------------------------------------------------------------------
+// COMPLAINTS
+// ---------------------------------------------------------------------------
+
+model Complaint {
+  id            String            @id @default(uuid())
+  ticketNumber  String            @unique
+  title         String
+  description   String
+  category      ComplaintCategory
+  priority      ComplaintPriority @default(MEDIUM)
+  status        ComplaintStatus   @default(OPEN)
+
+  residentId    String
+  resident      User              @relation("ResidentComplaints", fields: [residentId], references: [id], onDelete: Cascade)
+
+  assignedToId  String?
+  assignedTo    User?             @relation("AssignedComplaints", fields: [assignedToId], references: [id], onDelete: SetNull)
+
+  internalNotes String?
+
+  isOverdue     Boolean           @default(false)
+  dueDate       DateTime?
+  resolvedAt    DateTime?
+  closedAt      DateTime?
+
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  images        ComplaintImage[]
+  history       ComplaintHistory[]
+  notifications Notification[]
+
+  @@index([residentId])
+  @@index([status])
+  @@index([priority])
+  @@index([category])
+  @@index([isOverdue])
+  @@index([createdAt])
+  @@map("complaints")
+}
+
+model ComplaintImage {
+  id          String    @id @default(uuid())
+  complaintId String
+  complaint   Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  url         String
+  publicId    String?
+  createdAt   DateTime  @default(now())
+
+  @@index([complaintId])
+  @@map("complaint_images")
+}
+
+model ComplaintHistory {
+  id          String            @id @default(uuid())
+  complaintId String
+  complaint   Complaint         @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+
+  actorId     String?
+  actor       User?             @relation("ActorHistories", fields: [actorId], references: [id], onDelete: SetNull)
+
+  oldStatus   ComplaintStatus?
+  newStatus   ComplaintStatus?
+  oldPriority ComplaintPriority?
+  newPriority ComplaintPriority?
+
+  notes       String?
+
+  createdAt   DateTime          @default(now())
+
+  @@index([complaintId])
+  @@map("complaint_history")
+}
+
+// ---------------------------------------------------------------------------
+// NOTICE BOARD
+// ---------------------------------------------------------------------------
+
+model Notice {
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  isPinned    Boolean  @default(false)
+  isImportant Boolean  @default(false)
+
+  authorId    String
+  author      User     @relation("NoticeAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isPinned])
+  @@index([createdAt])
+  @@map("notices")
+}
+
+// ---------------------------------------------------------------------------
+// NOTIFICATIONS
+// ---------------------------------------------------------------------------
+
+model Notification {
+  id          String            @id @default(uuid())
+  userId      String
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  type        NotificationType
+  title       String
+  message     String
+  isRead      Boolean           @default(false)
+
+  complaintId String?
+  complaint   Complaint?        @relation(fields: [complaintId], references: [id], onDelete: SetNull)
+
+  createdAt   DateTime          @default(now())
+
+  @@index([userId])
+  @@index([isRead])
+  @@map("notifications")
+}
+
+// ---------------------------------------------------------------------------
+// EMAIL LOGS
+// ---------------------------------------------------------------------------
+
+model EmailLog {
+  id        String      @id @default(uuid())
+  userId    String?
+  user      User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  toEmail   String
+  subject   String
+  template  String
+  status    EmailStatus @default(PENDING)
+  error     String?
+
+  createdAt DateTime    @default(now())
+
+  @@index([userId])
+  @@index([status])
+  @@map("email_logs")
+}
+
+// ---------------------------------------------------------------------------
+// PRIORITY / OVERDUE SETTINGS
+// ---------------------------------------------------------------------------
+
+model PrioritySettings {
+  id                String            @id @default(uuid())
+  priority          ComplaintPriority @unique
+  overdueThresholdDays Int            @default(7)
+  updatedAt         DateTime          @updatedAt
+
+  @@map("priority_settings")
+}
+
+// ---------------------------------------------------------------------------
+// SYSTEM SETTINGS (key-value store for global config)
+// ---------------------------------------------------------------------------
+
+model SystemSetting {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("system_settings")
+}
+
+// ---------------------------------------------------------------------------
+// AUDIT LOGS
+// ---------------------------------------------------------------------------
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  action     String
+  entityType String
+  entityId   String?
+  metadata   String?
+  ipAddress  String?
+
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@map("audit_logs")
+}
