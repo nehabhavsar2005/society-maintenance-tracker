@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
 
 # 🏢 Society Maintenance Tracker
@@ -71,11 +72,19 @@ This platform gives **Residents** a clean, guided way to raise a complaint — w
 > 📊 **Analytics** — role-aware dashboards turn raw complaint data into actionable insight: category breakdowns, priority distribution, monthly trends, and recent activity — at a glance.
 
 The result: faster resolutions, full transparency, and a paper trail for every decision made.
+=======
+Rewrite my README.md completely.
 
----
+The project is already complete. Do NOT change any code, folders, configuration files, or documentation. Only rewrite README.md.
 
-## ✨ Features
+I want a world-class GitHub README that looks like a premium open-source project similar to Vercel, Supabase, Appwrite, Cal.com, Payload CMS, or shadcn/ui.
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
+The README should be visually attractive, interactive, professional, and recruiter-friendly.
+
+Requirements:
+
+<<<<<<< HEAD
 <details open>
 <summary><strong>🔐 Authentication</strong></summary>
 
@@ -281,11 +290,23 @@ The result: faster resolutions, full transparency, and a paper trail for every d
 </details>
 
 Full checklist: see [`docs/FEATURES.md`](./docs/FEATURES.md).
+=======
+• Keep ALL existing information from the current README.
+• Do not remove any feature.
+• Do not remove any setup steps.
+• Keep all deployment instructions.
+• Keep documentation links.
+• Keep environment variable instructions.
+• Keep GitHub submission checklist.
 
----
+Instead of the current simple layout, redesign it beautifully.
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
-## 🧱 Tech Stack
+Include:
 
+# Hero Section
+
+<<<<<<< HEAD
 <table>
 <tr><td valign="top" width="50%">
 
@@ -356,11 +377,15 @@ Full checklist: see [`docs/FEATURES.md`](./docs/FEATURES.md).
 
 </td></tr>
 </table>
+=======
+A beautiful centered title.
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
----
+Project tagline.
 
-## 📁 Folder Structure
+Short introduction.
 
+<<<<<<< HEAD
 <details open>
 <summary><strong>Click to expand the full monorepo layout</strong></summary>
 
@@ -626,39 +651,66 @@ society-maintenance-tracker/
 ---
 
 ## 🚀 Installation
+=======
+Beautiful emoji usage.
 
-### Prerequisites
+Professional badges using shields.io including:
 
+- Next.js
+- React
+- TypeScript
+- Express
+- PostgreSQL
+- Prisma
+- TailwindCSS
+- JWT
+- License
+- Build Status
+- Last Commit
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
+
+Navigation links:
+
+<<<<<<< HEAD
 - ✅ Node.js ≥ 18.18
 - ✅ A PostgreSQL database (local, Docker, or [Neon](https://neon.tech) free tier)
 - ⬜ (Optional) Cloudinary account for image uploads
 - ⬜ (Optional) SMTP credentials (e.g. Gmail App Password) for emails
 
 ### 1️⃣ Install dependencies
+=======
+• Features
+• Screenshots
+• Tech Stack
+• Installation
+• Architecture
+• API
+• Deployment
 
-```bash
-npm install
-```
+------------------------------------------------
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
+# Project Preview
+
+<<<<<<< HEAD
 ### 2️⃣ Configure environment variables
+=======
+Add placeholders for:
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
-```bash
-cp apps/backend/.env.example apps/backend/.env
-cp apps/frontend/.env.example apps/frontend/.env
-```
+Banner
 
-Edit `apps/backend/.env` with your `DATABASE_URL`, JWT secrets, Cloudinary and SMTP credentials. See [Environment Variables](#-environment-variables) below.
+Dashboard Screenshot
 
+<<<<<<< HEAD
 ### 3️⃣ Set up the database
+=======
+Login Screenshot
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
-```bash
-cd apps/backend
-npm run prisma:generate
-npm run prisma:migrate
-npm run seed
-cd ../..
-```
+Admin Screenshot
 
+<<<<<<< HEAD
 > The seed script creates:
 >
 > - 👑 1 admin (`admin@societytracker.com`)
@@ -668,41 +720,47 @@ cd ../..
 > - 🔑 All seeded users share the password: **`Password@123`**
 
 ### 4️⃣ Run the app
+=======
+Analytics Screenshot
 
-```bash
-# Terminal 1
-npm run dev:backend     # http://localhost:5000
+Dark Mode Screenshot
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
-# Terminal 2
-npm run dev:frontend    # http://localhost:3000
-```
+Mobile Screenshot
 
+Write them as markdown image placeholders so I can replace them later.
+
+<<<<<<< HEAD
 Open **[http://localhost:3000](http://localhost:3000)** and log in with the seeded admin or resident credentials above. 🎉
+=======
+------------------------------------------------
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
----
+# About the Project
 
-## 🔐 Environment Variables
+Explain what the project solves.
 
+<<<<<<< HEAD
 ### Backend — `apps/backend/.env`
+=======
+Mention:
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
-| Variable | Description |
-|---|---|
-| `DATABASE_URL` | PostgreSQL connection string |
-| `JWT_ACCESS_SECRET` / `JWT_REFRESH_SECRET` | Long random secrets for signing tokens |
-| `JWT_ACCESS_EXPIRES_IN` / `JWT_REFRESH_EXPIRES_IN` | Token lifetimes (default `15m` / `7d`) |
-| `CLIENT_URL` | Frontend origin, used for CORS + email links |
-| `CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_API_KEY` / `CLOUDINARY_API_SECRET` | Cloudinary credentials |
-| `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASS` / `EMAIL_FROM` | SMTP credentials for Nodemailer |
-| `DEFAULT_OVERDUE_DAYS` | Fallback overdue threshold if not configured in DB |
+Residents
 
+<<<<<<< HEAD
 > Full list with defaults: [`apps/backend/.env.example`](./apps/backend/.env.example)
 
 ### Frontend — `apps/frontend/.env`
+=======
+Admins
 
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_API_URL` | Backend API base URL, e.g. `http://localhost:5000/api` |
+Complaint lifecycle
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
+Automation
+
+<<<<<<< HEAD
 > ⚠️ **Never commit your real `.env` files.** Only `.env.example` should be tracked in Git.
 
 ---
@@ -743,9 +801,13 @@ Normalized PostgreSQL schema managed with **Prisma migrations**. All relations u
 > Replace the placeholders in `docs/screenshots/` — see [`docs/SCREENSHOTS.md`](./docs/SCREENSHOTS.md) for the exact filenames expected.
 
 ---
+=======
+Notifications
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
-## 📚 Documentation
+Analytics
 
+<<<<<<< HEAD
 | Document | Description |
 |---|---|
 | 📘 [API Documentation](./docs/API_DOCUMENTATION.md) | Every endpoint, parameters, and response shapes |
@@ -756,11 +818,15 @@ Normalized PostgreSQL schema managed with **Prisma migrations**. All relations u
 | ☁️ [Deployment Guide](./docs/DEPLOYMENT.md) | Step-by-step Vercel / Render / Neon deployment |
 | ✅ [Feature Checklist](./docs/FEATURES.md) | Full list of implemented features |
 | 🖼️ [Screenshots Guide](./docs/SCREENSHOTS.md) | Expected screenshot filenames & placement |
+=======
+------------------------------------------------
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
----
+# Features
 
-## 🧪 Testing the App
+Instead of bullets, organize features into modern tables.
 
+<<<<<<< HEAD
 - 🔐 **Auth** — register a new resident, log in as admin/resident, test forgot/reset password.
 - 📝 **Complaints** — create a complaint with photos, edit/delete while `OPEN`, watch it become locked after an admin action.
 - 🛠️ **Admin** — change status/priority, assign, add internal notes, try bulk actions, delete a complaint.
@@ -768,22 +834,27 @@ Normalized PostgreSQL schema managed with **Prisma migrations**. All relations u
 - 📢 **Notices** — publish, pin, mark important, edit, delete as admin; view as resident.
 - 🔔 **Notifications** — trigger any of the above and check the bell icon dropdown.
 - 📊 **Dashboard** — verify stat cards and charts update as data changes.
+=======
+Sections:
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
----
+Authentication
 
-## 🏗️ Production Build
+Complaint Management
 
-```bash
-npm run build:backend
-npm run build:frontend
-```
+Admin Dashboard
 
+<<<<<<< HEAD
 > ✅ Both apps are verified to build and lint cleanly with **zero errors and zero warnings**.
+=======
+Notifications
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
----
+Notice Board
 
-## ☁️ Deployment
+Analytics
 
+<<<<<<< HEAD
 See the full [Deployment Guide](./docs/DEPLOYMENT.md) for step-by-step instructions.
 
 | Layer | Platform |
@@ -827,19 +898,19 @@ Society Maintenance Tracker was built to demonstrate what a genuinely production
 [![Email](https://img.shields.io/badge/Email-your.email%40example.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
 
 </div>
+=======
+Email System
 
----
+Audit Logs
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
 
-## 📦 GitHub Submission Checklist
+Overdue Detection
 
-- [x] Repository uses `main` as the default branch
-- [x] `.env` files are excluded via `.gitignore` (only `.env.example` is committed)
-- [x] `node_modules`, `.next`, `dist`, `build`, `coverage`, logs, and `uploads` are excluded
-- [x] `npm run build:backend` and `npm run build:frontend` succeed with zero errors
-- [x] `README.md` includes setup, API docs, deployment guide
-- [x] `.env.example` provided for both apps
-- [x] No secrets committed
+UI/UX
 
+Performance
+
+<<<<<<< HEAD
 <details>
 <summary><strong>🔧 Git commands to publish this repository</strong></summary>
 
@@ -868,9 +939,17 @@ git push -u origin main
 </details>
 
 ---
+=======
+Security
 
-## 📄 License
+------------------------------------------------
 
+# Tech Stack
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
+
+Use attractive markdown tables.
+
+<<<<<<< HEAD
 This project is provided as-is for educational and evaluation purposes.
 
 <div align="center">
@@ -882,3 +961,268 @@ This project is provided as-is for educational and evaluation purposes.
 Made with ❤️ and a lot of ☕
 
 </div>
+=======
+Frontend
+
+Backend
+
+Database
+
+ORM
+
+Authentication
+
+Charts
+
+State Management
+
+Validation
+
+Animation
+
+Deployment
+
+------------------------------------------------
+
+# Folder Structure
+
+Keep the current folder structure but redesign it beautifully.
+
+------------------------------------------------
+
+# Architecture
+
+Create a clean ASCII architecture diagram.
+
+Show:
+
+Frontend
+
+↓
+
+Backend API
+
+↓
+
+Prisma
+
+↓
+
+PostgreSQL
+
+Cloudinary
+
+SMTP
+
+------------------------------------------------
+
+# Complaint Workflow
+
+Create a visual workflow.
+
+Resident
+
+↓
+
+Create Complaint
+
+↓
+
+Admin Review
+
+↓
+
+Assigned
+
+↓
+
+In Progress
+
+↓
+
+Resolved
+
+↓
+
+Closed
+
+------------------------------------------------
+
+# Dashboard Features
+
+Create feature cards using markdown tables.
+
+------------------------------------------------
+
+# Security Features
+
+JWT
+
+RBAC
+
+Password Hashing
+
+Protected Routes
+
+Rate Limiting
+
+Validation
+
+------------------------------------------------
+
+# API Overview
+
+Beautiful endpoint table.
+
+Authentication
+
+Complaints
+
+Dashboard
+
+Users
+
+Notifications
+
+Settings
+
+------------------------------------------------
+
+# Installation
+
+Make it look modern.
+
+Use numbered sections.
+
+Use beautiful code blocks.
+
+------------------------------------------------
+
+# Environment Variables
+
+Create beautiful tables.
+
+Backend
+
+Frontend
+
+------------------------------------------------
+
+# Database
+
+Explain all Prisma models.
+
+------------------------------------------------
+
+# Screenshots
+
+Create placeholders.
+
+Desktop
+
+Dark Mode
+
+Mobile
+
+Dashboard
+
+Analytics
+
+------------------------------------------------
+
+# Documentation
+
+Keep links.
+
+Improve presentation.
+
+------------------------------------------------
+
+# Production Build
+
+Keep build commands.
+
+------------------------------------------------
+
+# Deployment
+
+Keep deployment instructions.
+
+------------------------------------------------
+
+# Roadmap
+
+Add future features:
+
+AI Complaint Categorization
+
+AI Complaint Summarization
+
+Real-time Notifications
+
+WebSockets
+
+PWA
+
+Mobile App
+
+OCR Bill Scanner
+
+WhatsApp Notifications
+
+Visitor Management
+
+Maintenance Payments
+
+------------------------------------------------
+
+# Why this project?
+
+Write a professional paragraph.
+
+------------------------------------------------
+
+# Author
+
+Create a professional author section.
+
+GitHub
+
+LinkedIn placeholder
+
+Email placeholder
+
+------------------------------------------------
+
+# License
+
+Keep license.
+
+------------------------------------------------
+
+Formatting Requirements
+
+Use:
+
+- centered headings
+- markdown tables
+- emojis
+- separators
+- badges
+- collapsible sections (<details>)
+- blockquotes
+- code blocks
+- quote boxes
+- checklist
+- navigation links
+
+The README should look like one of the best GitHub repositories.
+
+Length should be around 600–900 lines.
+
+Do NOT invent features that don't exist.
+
+Do NOT remove any existing information.
+
+Only improve presentation, structure, and visual appeal.
+>>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
