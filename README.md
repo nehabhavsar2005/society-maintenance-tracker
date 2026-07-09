@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div align="center">
 
 # 🏢 Society Maintenance Tracker
@@ -73,11 +72,6 @@ The result: faster resolutions, full transparency, and a paper trail for every d
 Rewrite my README.md completely.
 
 The project is already complete. Do NOT change any code, folders, configuration files, or documentation. Only rewrite README.md.
-
-I want a world-class GitHub README that looks like a premium open-source project similar to Vercel, Supabase, Appwrite, Cal.com, Payload CMS, or shadcn/ui.
->>>>>>> a3b6eb2bbadc375edd54ac9a61ac14117d017b2f
-
-The README should be visually attractive, interactive, professional, and recruiter-friendly.
 
 Requirements:
 
