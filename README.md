@@ -30,28 +30,21 @@ Built with a premium SaaS-grade UI/UX inspired by Linear, Notion, and the Vercel
 </div>
 
 ---
-
 ## 🖼️ Project Preview
 
 <div align="center">
 
-**Banner**
+## 📊 Dashboard
 
-![Society Maintenance Tracker Banner](./docs/screenshots/banner.png)
+![Dashboard Screenshot](./docs/screenshots/dashboard.png)
 
-| Dashboard | Login |
-|---|---|
-| ![Dashboard Screenshot](./docs/screenshots/dashboard.png) | ![Login Screenshot](./docs/screenshots/login.png) |
+| Banner | Login |
+|--------|-------|
+| ![Banner Screenshot](./docs/screenshots/banner.png) | ![Login Screenshot](./docs/screenshots/login.png) |
 
-| Admin Panel | Analytics |
-|---|---|
-| ![Admin Screenshot](./docs/screenshots/admin.png) | ![Analytics Screenshot](./docs/screenshots/complaints.png) |
-
-| Dark Mode | Mobile View |
-|---|---|
-| ![Dark Mode Screenshot](./docs/screenshots/banner.png) | ![Mobile Screenshot](./docs/screenshots/mobile.png) |
-
-> 📸 *All images above are placeholders — drop your real screenshots into `docs/screenshots/` with the matching filenames and they'll render automatically.*
+| Admin Panel | Complaints |
+|-------------|------------|
+| ![Admin Screenshot](./docs/screenshots/admin.png) | ![Complaints Screenshot](./docs/screenshots/complaints.png) |
 
 </div>
 
